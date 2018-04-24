@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Son quartier en chiffres</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+
+
+    <link href="{{url_for('static', filename = 'css/app_test.css')}}" rel="stylesheet">
+
+    <script src="{{url_for('static', filename = 'js/jquery-3.3.1.min.js')}}"></script>
+    <script type="text/javascript" src= "{{ url_for('static', filename = 'js/popper.min.js') }}"></script>
+
+    <script type="text/javascript" src= "{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/leaflet.css')}}" rel="stylesheet">
+    <script src="{{url_for('static', filename = 'js/leaflet.js')}}"></script>
+
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Son quartier en chiffres</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Application<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+  {% block body %}{% endblock %}
+  </body>
+</html>

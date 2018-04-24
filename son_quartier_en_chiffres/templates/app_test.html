@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div id='geoinformation'>
+<div class="card">
+  <div class="card-header">
+    Géoinformation
+  </div>
+  <div class="card-body">
+	<span id='information'> </span>
+  </div>
+</div>
+</div>
+
+<div id='map'></div>
+
+<script>
+	var map = L.map('map').fitWorld();
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(map);
+
+	function onLocationFound(e) {
+		//var radius = e.accuracy / 2;
+		L.marker(e.latlng).addTo(map)
+			//.bindPopup("You are within " + radius + " meters from this point").openPopup();
+		L.circle(e.latlng, 300).addTo(map);
+		map.setView(e.latlng, 14);
+
+
+		$.getJSON("geoinformation/" + e.latlng, function(data){
+		   $('#information').html(data)});
+	}
+
+	function onLocationError(e) {
+		alert(e.message);
+	}
+
+	map.on('locationfound', onLocationFound);
+	map.on('locationerror', onLocationError);
+
+	map.locate({setView: true, maxZoom: 18});
+
+</script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Mobile tutorial - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+
+
+
+
+
+	<style>body { padding: 0; margin: 0; }</style>
+</head>
+<body>
+
+
+
+
+
+</body>
+</html>
